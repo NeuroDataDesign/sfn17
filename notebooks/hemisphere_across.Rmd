@@ -141,7 +141,7 @@ Where $\delta_i$ is the difference in connectivity for the $i^{th}$ group of gra
 
 That is, determine the probability of incorrectly rejecting the null hypothesis that the difference in connectivity in the graphs of $G1$ is less than or equal to the difference in connectivity in the graphs of $G_2$. 
 
-For this notebook, we will investigate with $E_1$ as the bilateral edges, and $E_2$ as the non-bilateral edges.
+For this notebook, we will investigate with $E_1$ as the ipsi-lateral edges, and $E_2$ as the contra-lateral edges.
 
 ## Test Statistic
 
@@ -175,11 +175,12 @@ where $p(x, df)$ is the pdf for the $T$ distribution with degrees of freedom $df
 
 ## Statistical Power
 
-1) The statistical power can be computed as the inverse of the probability of making a Type II ($\beta$) error. A type II error can be defined as follows:
+1) The statistical power can be computed as the inverse of the probability of making a Type II ($\beta$) error, $1 - \beta$. A type II error can be defined as follows:
 
 \begin{align*}
-    \beta = \mathbb{P}(\textrm{reject $H_A$ in favor of $H_0$ | $H_A$ is true}) = \mathbb{P}(T_{observed} > T_{critical})
+    \beta = \mathbb{P}(\textrm{reject $H_A$ in favor of $H_0$ | $H_A$ is true}) = \mathbb{P}(T_{observed} < T_{critical})
 \end{align*}
+
 
 where $T_{critical}$ is the test-statistic at the given level of significance $\alpha$ specified by our test. To compute the power, we will compute the rejection cutoff for the test-statistic, and then simulate data under the alternative hypothesis, and see how many times we would reject the null hypothesis in our simulated data. In pseudo-code:
 

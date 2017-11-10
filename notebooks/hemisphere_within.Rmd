@@ -75,12 +75,12 @@ Then:
 where $p$ is the probability of a given edge, $k$ are the number of connected edges, and $n$ is the number of possible edges. We can therefore define an estimator of $B$, $\hat{B}$ where connections between community $V_l$ and $V_m$ can be modelled iid:
 
 \begin{align*}
-  \hat{B}_{lm} &= \mathcal{N}(\mu_{lm}, \sigma_{lm})
+  \hat{B}_{lm} &\sim \mathcal{N}(\mu_{lm}, \sigma_{lm})
 \end{align*}
 
 where $\hat{\mu}_{lm} = \frac{1}{\left|C_l \times C_m\right|}\sum_{(i, j) \in E(C_l \times C_m)} A_{ij}$, and $\hat{\sigma}^2_{lm} = \frac{\hat{\mu}_{lm}(1 - \hat{\mu}_{lm})}{\left|C_l \times C_m\right|}$.
 
-Assuming our edges are iid, we can generalize the above model very simply by instead of considering our vertices to exist in communities, placing our edges into two communities $E_1$ and $E_2$, where $E_1 \cup E_2 = E$ and $E_1 \cap E_2 = \null$. We propose the structured independent-edge model:
+Assuming our edges are iid, we can generalize the above model very simply by instead of considering our vertices to exist in communities, placing our edges into two communities $E_1$ and $E_2$, where $E_1 \cup E_2 = E$ and $E_1 \cap E_2 = \emptyset$. We propose the structured independent-edge model:
 
 \begin{align*}
 	A \sim SIEM(G, B)
@@ -130,7 +130,7 @@ where $p_j$ represents the probability of an edge in the $j^{th}$ edge-community
     \sigma_{\hat{p}_2} &= s_2 = \frac{p_{2}(1 - p_{2})}{|E_2|}
 \end{align*}
 
-Then we have $\delta = p_1 - p_2$ representing the difference in connectivity from $E_1$ to $E_2$. For these experiments, we will let $E_1$ be the bilateral edges, and $E_2$ the non-bilateral edges.
+Then we have $\delta = p_1 - p_2$ representing the difference in connectivity from $E_1$ to $E_2$. For these experiments, we will let $E_1$ be the ipsi-lateral edges, and $E_2$ the contra-lateral edges.
 
 ## Statistical Goal
 
@@ -142,7 +142,7 @@ Let $H_0: p_1 <= p_2$, and $H_A: p_1 > p_2$, determine:
 
 That is, determine the probability of incorrectly rejecting the null hypothesis that the difference in connectivity in the graphs of $G1$ is less than or equal to the difference in connectivity in the graphs of $G_2$. 
 
-For this notebook, we will investigate with $E_1$ as the bilateral edges, and $E_2$ as the non-bilateral edges.
+For this notebook, we will investigate with $E_1$ as the ipsi-lateral edges, and $E_2$ as the contra-lateral edges.
 
 ## Test Statistic
 
@@ -176,10 +176,10 @@ where $p(x, df)$ is the pdf for the $T$ distribution with degrees of freedom $df
 
 ## Statistical Power
 
-1) The statistical power can be computed as the inverse of the probability of making a Type II ($\beta$) error. A type II error can be defined as follows:
+1) The statistical power can be computed as the inverse of the probability of making a Type II ($\beta$) error, $1 - \beta$. A type II error can be defined as follows:
 
 \begin{align*}
-    \beta = \mathbb{P}(\textrm{reject $H_A$ in favor of $H_0$ | $H_A$ is true}) = \mathbb{P}(T_{observed} > T_{critical})
+    \beta = \mathbb{P}(\textrm{reject $H_A$ in favor of $H_0$ | $H_A$ is true}) = \mathbb{P}(T_{observed} < T_{critical})
 \end{align*}
 
 where $T_{critical}$ is the test-statistic at the given level of significance $\alpha$ specified by our test. To compute the power, we will compute the rejection cutoff for the test-statistic, and then simulate data under the alternative hypothesis, and see how many times we would reject the null hypothesis in our simulated data. In pseudo-code:
