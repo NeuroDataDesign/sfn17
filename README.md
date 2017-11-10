@@ -5,7 +5,7 @@ A repository containing our SfN code.
 
 ## Packages
 
-To use the notebooks included here, please first install the following packages:
+To use the notebooks included here, please first install the following packages, from an R terminal:
 
 ```
 install.packages(c('ggplot2','latex2exp','igraph','devtools'))
