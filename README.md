@@ -10,8 +10,9 @@ To use the notebooks included here, please first install the following packages,
 ```
 install.packages(c('ggplot2','latex2exp','igraph','devtools'))
 require('devtools')
-install_github('neurodata/fmriutils')
 ```
+
+and follow this tutorial for the [fmriutils](https://github.com/neurodata/fmriutils) package.
 
 ## Data
 
