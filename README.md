@@ -10,8 +10,9 @@ To use the notebooks included here, please first install the following packages,
 ```
 install.packages(c('ggplot2','latex2exp','igraph','devtools'))
 require('devtools')
-install_github('neurodata/fmriutils')
 ```
+
+and follow this tutorial for the [fmriutils](https://github.com/neurodata/fmriutils) package.
 
 ## Data
 
@@ -37,3 +38,12 @@ mv /data/connectome_stats.zip /data/connectome_stats.zip
 cd /data/connectome_stats
 unzip connectome_stats.zip
 ```
+
+# Notebooks
+
+The notebooks can be visualized as below:
+
+[Within Modality Ipsilateral vs Contralateral](https://neurodatadesign.github.io/sfn17/hemisphere_within.html)  
+[Between Modality Ipsilateral vs Contralateral](https://neurodatadesign.github.io/sfn17/hemisphere_across.html)  
+[Within Modality Bilateral vs Nonbilateral](https://neurodatadesign.github.io/sfn17/bilateral_within.html)  
+[Between Modality Ipsilateral vs Contralateral](https://neurodatadesign.github.io/sfn17/bilateral_across.html)  
